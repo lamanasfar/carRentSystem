@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - include:
+        file: liquibase/changelog/006-create-user.yml
+  - include:
+      file: liquibase/changelog/005-create-rentals.yml
+  - include:
+      file: liquibase/changelog/001-create-cars.yml
+  - include:
+      file: liquibase/changelog/002-create-car-images.yml
+  - include:
+      file: liquibase/changelog/003-create-customers.yml
+  - include:
+      file: liquibase/changelog/004-create-payments.yml
+
+

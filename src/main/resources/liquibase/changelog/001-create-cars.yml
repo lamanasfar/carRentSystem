@@ -1,0 +1,106 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-cars-table
+      author: laman
+      changes:
+        - createTable:
+            tableName: cars
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_cars
+                    nullable: false
+
+              - column:
+                  name: brand
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: model
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: year
+                  type: INT
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: plate_number
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: uk_cars_plate_number
+
+              - column:
+                  name: vin_code
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: uk_cars_vin_code
+
+              - column:
+                  name: color
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: daily_price
+                  type: DECIMAL(10,2)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: status
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: leasing_company
+                  type: VARCHAR(150)
+
+              - column:
+                  name: leasing_start_date
+                  type: DATE
+
+              - column:
+                  name: leasing_end_date
+                  type: DATE
+
+              - column:
+                  name: insurance_company
+                  type: VARCHAR(150)
+
+              - column:
+                  name: insurance_start_date
+                  type: DATE
+
+              - column:
+                  name: insurance_end_date
+                  type: DATE
+
+              - column:
+                  name: technical_inspection_date
+                  type: DATE
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP

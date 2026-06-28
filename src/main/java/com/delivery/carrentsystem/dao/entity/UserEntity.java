@@ -14,9 +14,15 @@ import lombok.Setter;
 @Entity
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private Boolean enabled;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private UserRole role;

@@ -18,13 +18,27 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "customers")
 public class CustomerEntity extends BaseEntity {
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
     private String fatherName;
-    private String phoneNumber;
+
+    @Column(nullable = false, unique = true)
     private String finCode;
+
+    @Column(nullable = false, unique = true)
+    private String phoneNumber;
+
+    @Column(nullable = false, unique = true)
     private String identitySerialNumber;
+
+    @Column(nullable = false, unique = true)
     private String drivingLicenseNumber;
+
     private String driverLicenseImage;
     private String identityCardFrontImage;
     private String identityCardBackImage;

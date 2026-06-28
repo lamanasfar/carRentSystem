@@ -1,0 +1,120 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-rentals-table
+      author: leman
+      changes:
+        - createTable:
+            tableName: rentals
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_rentals
+                    nullable: false
+
+              - column:
+                  name: customer_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: car_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: start_date
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: expected_return_date
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: actual_return_date
+                  type: TIMESTAMP
+
+              - column:
+                  name: daily_price
+                  type: DECIMAL(10,2)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: total_price
+                  type: DECIMAL(10,2)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: status
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: note
+                  type: VARCHAR(1000)
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+
+        - addForeignKeyConstraint:
+            baseTableName: rentals
+            baseColumnNames: customer_id
+            referencedTableName: customers
+            referencedColumnNames: id
+            constraintName: fk_rentals_customer
+            onDelete: RESTRICT
+
+        - addForeignKeyConstraint:
+            baseTableName: rentals
+            baseColumnNames: car_id
+            referencedTableName: cars
+            referencedColumnNames: id
+            constraintName: fk_rentals_car
+            onDelete: RESTRICT
+
+        - createIndex:
+            tableName: rentals
+            indexName: idx_rentals_customer_id
+            columns:
+              - column:
+                  name: customer_id
+
+        - createIndex:
+            tableName: rentals
+            indexName: idx_rentals_car_id
+            columns:
+              - column:
+                  name: car_id
+
+        - createIndex:
+            tableName: rentals
+            indexName: idx_rentals_status
+            columns:
+              - column:
+                  name: status
+
+        - createIndex:
+            tableName: rentals
+            indexName: idx_rentals_start_date
+            columns:
+              - column:
+                  name: start_date
